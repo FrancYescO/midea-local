@@ -137,10 +137,13 @@ class MideaCDDevice(MideaDevice):
                 # new protocol, [subtype0, model RSJRAC01] [subtype186, model RSJ000CB]
                 # old protocol. current subtype is unknown, to be done.
                 check_device = (
-                    self.subtype == CDSubType.T186 or self.model == "RSJRAC01" or self.model == "RSJRAC06"  or self.model == "RSJRAC07",
+                    self.subtype == CDSubType.T186
+                    or self.model == "RSJRAC01"
+                    or self.model == "RSJRAC06"
+                    or self.model == "RSJRAC07"
                 )
                 return_value = LuaProtocol.new if check_device else LuaProtocol.old
-        if isinstance(value, bool | int):
+        if isinstance(value, (bool, int)):
             return_value = LuaProtocol.new if value else LuaProtocol.old
         return return_value
 
