@@ -185,8 +185,8 @@ class MideaCDDevice(MideaDevice):
                     DeviceAttributes.compressor_temperature,
                 ]:
                     self._attributes[attr] = self._value_to_temperature(value,
-                                                                        force_fahrenheit=(self.model in ["RSJRAC06","RSJRAC07"] and attr in [DeviceAttributes.outdoor_temperature]),
-                                                                        force_old=(self.model in ["RSJRAC06","RSJRAC07"] and attr in [DeviceAttributes.current_temperature]))
+                                                                        force_fahrenheit=(self.model in ["RSJRAC06","RSJRAC07"] and attr == DeviceAttributes.outdoor_temperature),
+                                                                        force_old=(self.model in ["RSJRAC06","RSJRAC07"] and attr == DeviceAttributes.current_temperature))
                 else:
                     self._attributes[attr] = value
                 new_status[str(attr)] = self._attributes[attr]
